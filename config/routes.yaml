@@ -1,0 +1,7 @@
+v1_inventory_controllers:
+  resource: routes/v1/inventory/routes.yaml
+  prefix: '/v1'
+
+v1_shopping_cart_controllers:
+  resource: routes/v1/shoppingCart/routes.yaml
+  prefix: '/v1'

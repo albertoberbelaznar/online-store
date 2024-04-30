@@ -1,0 +1,21 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Online\Store\App\:
+        resource: '../app'
+
+    Online\Store\App\Controller\:
+        resource: '../app/Controller'
+        tags: [ 'controller.service_arguments' ]
+
+    Online\Store\App\Listener\:
+        resource: '../app/Listener'
+
+    Online\Store\:
+        resource: '../src/'
+
+    Online\Store\App\Listener\ApiExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onException }

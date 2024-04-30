@@ -1,0 +1,14 @@
+product_add:
+  path: /product/{id}
+  controller: Online\Store\App\Controller\Product\Inventory\AddProductToInventoryController
+  methods: PUT
+
+product_remove:
+  path: /product/{id}
+  controller: Online\Store\App\Controller\Product\Inventory\RemoveProductFromInventoryController
+  methods: DELETE
+
+products_get:
+  path: /products
+  controller: Online\Store\App\Controller\Product\Inventory\GetProductsController
+  methods: GET

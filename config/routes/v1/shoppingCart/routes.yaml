@@ -1,0 +1,14 @@
+shopping_cart_add_item:
+  path: /user/{userId}/cart/{cartId}/item/{itemId}
+  controller: Online\Store\App\Controller\Product\ShoppingCart\AddItemToShoppingCartController
+  methods: PUT
+
+shopping_cart_get:
+  path: /user/{userId}/cart/{cartId}
+  controller: Online\Store\App\Controller\Product\ShoppingCart\GetShoppingCartController
+  methods: GET
+
+shopping_cart_price_get:
+  path: /user/{userId}/cart/{cartId}/price
+  controller: Online\Store\App\Controller\Product\ShoppingCart\GetShoppingCartPriceController
+  methods: GET
