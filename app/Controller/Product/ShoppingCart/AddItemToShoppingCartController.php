@@ -7,6 +7,8 @@ namespace Online\Store\App\Controller\Product\ShoppingCart;
 use Online\Store\Product\Application\Inventory\AddItemCommand;
 use Online\Store\Product\Application\Inventory\AddItemToShoppingCartUseCase;
 use Online\Store\Shared\Domain\Exception\InternalErrorException;
+use Online\Store\Shared\Domain\Exception\InvalidValueException;
+use Online\Store\Shared\Domain\Exception\MissingParamException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -20,6 +22,8 @@ class AddItemToShoppingCartController
 
     /**
      * @throws InternalErrorException
+     * @throws InvalidValueException
+     * @throws MissingParamException
      */
     public function __invoke(Request $request, string $userId, string $cartId, string $itemId): Response
     {
@@ -38,7 +42,7 @@ class AddItemToShoppingCartController
     }
 
     /**
-     * @throws InternalErrorException
+     * @throws MissingParamException
      *
      * @return array<string, mixed>
      */
@@ -47,7 +51,7 @@ class AddItemToShoppingCartController
         $jsonData = json_decode($request->getContent(), true);
         $errorList = array_filter(self::MANDATORY_PARAMS, static fn ($param) => !isset($jsonData[$param]));
         if ($errorList) {
-            throw new InternalErrorException(
+            throw new MissingParamException(
                 sprintf(
                     'Missing params: %s',
                     implode(',', $errorList)

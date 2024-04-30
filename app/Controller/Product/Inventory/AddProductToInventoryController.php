@@ -7,6 +7,8 @@ namespace Online\Store\App\Controller\Product\Inventory;
 use Online\Store\Product\Application\Inventory\AddProductCommand;
 use Online\Store\Product\Application\Inventory\AddProductToInventoryUseCase;
 use Online\Store\Shared\Domain\Exception\InternalErrorException;
+use Online\Store\Shared\Domain\Exception\InvalidValueException;
+use Online\Store\Shared\Domain\Exception\MissingParamException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -20,6 +22,8 @@ class AddProductToInventoryController
 
     /**
      * @throws InternalErrorException
+     * @throws MissingParamException
+     * @throws InvalidValueException
      */
     public function __invoke(Request $request, string $id): Response
     {
@@ -35,7 +39,7 @@ class AddProductToInventoryController
     }
 
     /**
-     * @throws InternalErrorException
+     * @throws MissingParamException
      *
      * @return array<string, string>
      */
@@ -44,7 +48,7 @@ class AddProductToInventoryController
         $jsonData = json_decode($request->getContent(), true);
         $errorList = array_filter(self::MANDATORY_PARAMS, static fn ($param) => !isset($jsonData[$param]));
         if ($errorList) {
-            throw new InternalErrorException(
+            throw new MissingParamException(
                 sprintf(
                     'Missing params: %s',
                     implode(',', $errorList)
