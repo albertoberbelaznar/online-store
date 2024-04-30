@@ -179,6 +179,8 @@ class MySQLProductRepository implements ProductRepository
     }
 
     /**
+     * @param array<string, mixed> $productData
+     *
      * @throws InvalidValueException
      */
     private function fromDataToProduct(array $productData): Product

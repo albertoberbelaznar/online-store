@@ -20,6 +20,9 @@ class AddProductCommand
         return $this->id;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function data(): array
     {
         return $this->data;

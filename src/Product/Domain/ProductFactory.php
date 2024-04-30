@@ -49,7 +49,5 @@ class ProductFactory
                 isset($data['updated_at']) ? new Date($data['updated_at']) : null,
             );
         }
-
-        throw new InvalidValueException('Invalid product type');
     }
 }

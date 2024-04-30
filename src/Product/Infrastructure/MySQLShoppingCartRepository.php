@@ -66,6 +66,8 @@ class MySQLShoppingCartRepository implements ShoppingCartRepository
     }
 
     /**
+     * @param array<string, mixed> $cartData
+     *
      * @throws InternalErrorException
      * @throws InvalidValueException
      */
