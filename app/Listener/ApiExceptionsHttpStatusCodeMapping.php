@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Online\Store\App\Listener;
 
 use InvalidArgumentException;
-use Online\Store\Shared\Domain\Exception\MissingParamException;
 use function Lambdish\Phunctional\get;
 use Online\Store\Shared\Domain\Exception\InvalidValueException;
+use Online\Store\Shared\Domain\Exception\MissingParamException;
 use Symfony\Component\HttpFoundation\Response;
 
 final class ApiExceptionsHttpStatusCodeMapping
